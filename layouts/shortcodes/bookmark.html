@@ -1,0 +1,29 @@
+{{ $_hugo_config := `{ "version": 1 }` }}
+
+<div>
+    <a target="_blank" rel="noopener noreferrer" class="bookmark" href="{{ .Get "url" }}">
+    <div>
+        <div class="bookmark-title">
+        {{ if .Get "title" -}}
+            {{ .Get "title" }}
+        {{else -}}
+            {{ . }}
+        {{ end -}}
+        </div>
+        <div class="bookmark-description">{{ .Inner | html }}</div>
+        <div class="bookmark-link">
+            {{ with .Get "favicon" -}}
+            <img src="{{ . }}" alt="Bookmark Target Favicon" loading="lazy">
+            {{ end -}}
+            {{ with .Get "url" -}}
+            <div>{{ . }}</div>
+            {{ end -}}
+        </div>
+    </div>
+    <div class="bookmark-image">
+        {{ with .Get "img" -}}
+        <img src="{{ . }}" alt="" loading="lazy">
+        {{ end -}}
+    </div>
+    </a>
+</div>
